@@ -70,13 +70,7 @@
   <script type="text/javascript">
 		function getAdvancedConfig() {
 			return {
-				form: {
-					autoSubmit: false,
-					firstname: 'Praenomen',
-					lastname: 'Gens',
-					email: 'praenomen.gens@calidumlitterae.com',
-					subject: 'Populated from data'
-				},
+			
 				formJSON: {
 					wrapper: '<table></table>',
 					inputs: [
@@ -108,22 +102,14 @@
 							maxlength: '100',
 							placeholder: 'Optional',
 							label: 'Subject'
-						},
-						// Custom Fields
-						{
-							id: 'custom_field_1',
-							name: 'customField1',
-							maxlength: '100',
-							placeholder: 'Custom Data',
-							label: 'Custom Field 1',
-							value: 'My Custom Value'
 						}
+	
 					]
 				}
 			};
 		}
 	</script>
-	<button type="button" id="chat-button" onclick="customPlugin.command('WebChat.open', getAdvancedConfig());">Start Chat (with data)</button>
+	
 </body>
 </html>
 
