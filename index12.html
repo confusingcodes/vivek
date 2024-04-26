@@ -7,106 +7,20 @@
 
 <body>
 
-  <!--Create a Widgets configuration object-->
-  <script type="text/javascript">
-
-    window._genesys = {
-      widgets: {
-        webchat: {
-          transport: {
-            type: 'purecloud-v2-sockets',
-            dataURL: 'https://api.mypurecloud.com',
-            deploymentKey : '8e69e2bd-976c-43c1-83f3-958041df9b8f',
-            orgGuid : 'f9432082-08c6-47f2-b574-fcbd01c7d735',
-            interactionData: {
-              routing: {
-                targetType: 'QUEUE',
-                targetAddress: 'Support',
-                priority: 2
-              }
-            }
-          },
-          userData: {
-            addressStreet: '64472 Brown Street',
-            addressCity: 'Lindgrenmouth',
-            addressPostalCode: '50163-2735',
-            addressState: 'FL',
-            phoneNumber: '1-916-892-2045 x293',
-            phoneType: 'Cell',
-            customerId: '59606',
-            // These fields should be provided via advanced configuration
-            // firstName: 'Praenomen',
-            // lastName: 'Gens',
-            // email: 'praenomen.gens@calidumlitterae.com',
-            // subject: 'Chat subject'
-          },
-
-           botAvatarImageUrl: 'https://dhqbrvplips7x.cloudfront.net/webchat/1.0.23/company-logo-small-9c9fe09b.png',
-           agent: {
-              avatarUrlPattern: 'https://dhqbrvplips7x.cloudfront.net/webchat/1.0.23/agent-e202505f.png'
-          }
-        }
-      }
-    };
-
-   </script>
-
-   <!-- Load CXBus and the widgets-core plugin -->
-   <script src="https://apps.mypurecloud.com/widgets/9.0/cxbus.min.js" onload="javascript:CXBus.configure({debug:false,pluginsPath:'https://apps.mypurecloud.com/widgets/9.0/plugins/'}); CXBus.loadPlugin('widgets-core');"></script>
-
-   <!-- Optional: Use CXBus to create plugins, subscribe to events, or call commands -->
-   <script type="text/javascript">
-
-    const customPlugin = CXBus.registerPlugin('Custom');
-
-  </script>
+ 
+<iframe
+    allow="microphone;"
+    width="350"
+    height="430"
+    src="https://console.dialogflow.com/api-client/demo/embedded/8999b105-a73f-4816-ba2a-42ef9e16260c">
+</iframe>
 
 
 
-  <button type="button" id="chat-button-simple" onclick="customPlugin.command('WebChat.open');">Start Chat (simple)</button>
 
-  <script type="text/javascript">
-		function getAdvancedConfig() {
-			return {
-			
-				formJSON: {
-					wrapper: '<table></table>',
-					inputs: [
-						// Default fields
-						{
-							id: 'cx_webchat_form_firstname',
-							name: 'firstname',
-							maxlength: '100',
-							placeholder: 'Required',
-							label: 'First Name'
-						},
-						{
-							id: 'cx_webchat_form_lastname',
-							name: 'lastname',
-							maxlength: '100',
-							placeholder: 'Required',
-							label: 'Last Name'
-						},
-						{
-							id: 'cx_webchat_form_email',
-							name: 'email',
-							maxlength: '100',
-							placeholder: 'Optional',
-							label: 'Email'
-						},
-						{
-							id: 'cx_webchat_form_subject',
-							name: 'subject',
-							maxlength: '100',
-							placeholder: 'Optional',
-							label: 'Subject'
-						}
-	
-					]
-				}
-			};
-		}
-	</script>
+
+
+
 	
 </body>
 </html>
