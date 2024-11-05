@@ -25,4 +25,48 @@
 </body>
 </html>
 
+def hello_world(request):
+    """
+    Cloud Function that responds with a message based on the request input.
+    Args:
+        request (flask.Request): The request object
+        (https://flask.palletsprojects.com/en/1.1.x/api/#incoming-request-data)
+    Returns:
+        The response text, or any set of values that can be turned into a
+        Response object using `make_response`
+        (https://flask.palletsprojects.com/en/1.1.x/api/#flask.make_response)
+    """
+    # Get request JSON body
+    request_json = request.get_json(silent=True)
+    request_args = request.args
 
+    # Extract tag from fulfillmentInfo if it exists
+    tag = request_json.get('fulfillmentInfo', {}).get('tag') if request_json else None
+    
+    # Get message from various possible sources
+    message = (tag or 
+              request_args.get('message') or 
+              (request_json.get('message') if request_json else None) or 
+              'Hello World!')
+
+    # Check if age parameter exists in sessionInfo
+    if request_json and 'sessionInfo' in request_json:
+        session_params = request_json.get('sessionInfo', {}).get('parameters', {})
+        if 'age' in session_params:
+            message = f"If you were 10 years older, you would be {session_params['age'] + 10}"
+
+    # Construct the response JSON
+    response = {
+        'fulfillment_response': {
+            'messages': [
+                {
+                    'text': {
+                        'text': [message]
+                    }
+                }
+            ]
+        }
+    }
+
+    # Return the response with 200 status code
+    return response, 200
